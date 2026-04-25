@@ -51,6 +51,9 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+*, *::before, *::after{
+    box-sizing: border-box;
+}
 
 /* ROOT VARIABLES */
 :root {
@@ -73,8 +76,126 @@ table {
     margin: 0 auto;
 }
 
+section {
+    width: 100%;
+}
+
+#expertise{
+    background-color: var(--white);
+    padding:60px 0px;
+    text-align: left;
+}
+
+#expertise h2{
+    font-weight: bold;
+    color: var(--black);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    line-height: 1.2
+}
+
+#expertise p{
+    color: var(--black);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+#offerings{
+    background-color: var(--white);
+    padding: 20px 0;
+}
+
+#offerings h2{
+    color: var(--black);
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+#offerings article{
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+#offerings h3{
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#offerings article p{
+    font-size: 0.7rem;
+    line-height: 1.5;
+
+}
+
+#results{
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 50px 0;
+}
+
+#results h3{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+#results h2{
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--white);
+}
+
+#results p{
+    margin-bottom: 30px;
+    line-height: 1.5;
+    
+}
+
+
+#results .profits table{
+    width:100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    text-align: center;
+}
+
+#results .profits th{
+    background-color: var(--black);
+    color: var(--white);
+    padding: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: 1px solid var(--charcoal);
+    
+}
+
+#results .profits td{
+    padding:15px;
+    color: var(--white);
+    font-size: .85rem;
+    border: 1px solid var(--charcoal);
+}
+
+#results tbody tr:nth-child(odd){
+    background-color: var(--black);
+}
+
+#results tbody tr:nth-child(even){
+    background-color: var(--charcoal);
+}
+
+
+
 /* ADD TO "INNOVATION & INVESTMENT SECTION (Photo by Kevin Matos on Unsplash) */
- {
+#innovation{
     background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('images/vanguard-hero.jpg') no-repeat center center/cover;
     height: 80vh;
     display: grid;
@@ -84,15 +205,82 @@ table {
     overflow: hidden;
 }
 
-/* ADD FLOATING SVG LOGO BEFORE THE H1 */
- {
-    content: "";
+.innovation-card{
+    background:rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(10px);
+    padding:2.5rem;
+    border-radius: 15px;
+    max-width: 500px;
+}
 
+.innovation-card h2 { color: var(--white); margin-bottom: 1rem;}
+.innovation-card p { color: var(--white); margin-bottom: 2rem; line-height: 1.5;}
+
+.consultation-button{
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    display:inline-block;
+
+}
+
+/* ADD FLOATING SVG LOGO BEFORE THE H1 */
+.nav-wrapper{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:15px 0;
+    width: 100%;
+}
+
+.nav-links{
+    display: none;
+}
+
+.menu-bar{
+    cursor:pointer;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.bar-line{
+    width: 25px;
+    height: 3px;
+    background-color: var(--white);
+    border-radius: 2px;
+}
+
+#vanguard{
+    background-color: #000000;
+    border-bottom: 2px solid var(--blue);
+    width: 100%;
+}
+
+#vanguard h1{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    color:var(--blue);
+}
+
+ #vanguard h1::before{
+    content: "";
+    display:inline-block;
     left:-.5rem;
     width: 3.75rem;
     height: 3.75rem;
     background: url('images/vanguard-logo.svg') no-repeat center/contain;
+    animation: float 4s ease-in-out infinite;
+}
 
+@keyframes float {
+    0%, 100% { transform: translateY(0);}
+    50% { transform: translateY(-10px);}
 }
 /* THIS ONE IS DONE FOR YOU */
 #bar-chart {
@@ -113,7 +301,7 @@ table {
     background: var(--charcoal);
     border-radius: 10px;
     position: relative;
-    transition: ;
+    transition: height 0.75s ease-in-out;
     height: 0;
 }
 /* THIS ONE IS DONE FOR YOU */
@@ -140,6 +328,14 @@ table {
     animation: stepUp 1s ease-in-out forwards;
 }
 
+@keyframes stepUp {
+    from{
+        height: 0;
+    }
+    to { height: var(--height);
+
+    }
+}
 
 /* MEDIA QUERIES (MEDIUM) */ 
 
